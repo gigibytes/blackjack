@@ -1,4 +1,4 @@
 (executable
  (public_name blackjack)
  (name main)
- (libraries blackjack core) (preprocess (pps ppx_jane ppx_sexp_conv)))
+ (libraries blackjack core) (preprocess (pps ppx_jane )))

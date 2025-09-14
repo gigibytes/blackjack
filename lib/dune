@@ -1,4 +1,4 @@
 (library
  (name blackjack)
  (libraries core)
- (preprocess (pps ppx_jane ppx_expect)))
+ (preprocess (pps ppx_jane ppx_sexp_conv ppx_fields_conv ppx_expect)))
