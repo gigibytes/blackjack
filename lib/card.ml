@@ -3,7 +3,6 @@ open! Core
 module Rank = struct
   module Pip = struct
     type t =
-    | One
     | Two
     | Three
     | Four
@@ -16,7 +15,6 @@ module Rank = struct
   [@@deriving sexp_of, enumerate]
   
     let value = function
-    | One -> `One
     | Two -> `Two
     | Three -> `Three
     | Four -> `Four
