@@ -1,8 +1,0 @@
-lib: [
-  "_build/install/default/lib/blackjack/META"
-  "_build/install/default/lib/blackjack/dune-package"
-  "_build/install/default/lib/blackjack/opam"
-]
-bin: [
-  "_build/install/default/bin/blackjack"
-]
