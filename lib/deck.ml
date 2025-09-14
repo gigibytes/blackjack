@@ -10,7 +10,17 @@ let full_deck : t =
     |> List.append acc)
   ~init:[]
 
-  let draw () = ();;
+  let rec shuffle (deck : t) =
+    (* maybe: create 52 elem array. Pick from the top of the list and place card in random spot in array. When out of cards (list empty) turn back to list and return. This would be a good shuffle acc to the Computerpphile vid. *)
+  ;;
+  
+  let draw (deck : t) : (Card.t option, t) =
+    match deck with
+    | [] -> (None, [])
+    | [x] -> (Some x, [])
+    | x :: xs —> (Some x, xs)
+  ;;
+
 (* should write an expect test here to see if the full_deck val is as expected *)
   (* for later: print_s output:
   ((Face King) Hearts)               
