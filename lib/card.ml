@@ -16,36 +16,26 @@ module Rank = struct
   [@@deriving sexp_of, enumerate]
   
     let value = function
-    | One -> 1
-    | Two -> 2
-    | Three -> 3
-    | Four -> 4
-    | Five -> 5
-    | Six -> 6
-    | Seven -> 7
-    | Eight -> 8
-    | Nine -> 9
-    | Ten -> 10
+    | One -> `One
+    | Two -> `Two
+    | Three -> `Three
+    | Four -> `Four
+    | Five -> `Five
+    | Six -> `Six
+    | Seven -> `Seven
+    | Eight -> `Eight
+    | Nine -> `Nine
+    | Ten ->  `Ten
   end
 
   module Face = struct
-    module Ace = struct
-      type t
-
-      module Possible_values = struct
-        type t = One | Eleven
-        
-        let value = function
-        | One -> 1
-        | Eleven -> 11
-      end
-    end
-    
-    type t = King | Queen | Jack
+    type t = King | Queen | Jack | Ace
     [@@deriving sexp_of, enumerate]
 
     let value = function
-    | King | Queen | Jack -> 10
+    | King | Queen | Jack -> `Ten
+    (* the actual value of an Ace will be determined during the game, depending on the value of the rest of the hand *)
+    | Ace -> `One_or_eleven
   end
 
   type t = 
