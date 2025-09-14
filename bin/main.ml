@@ -1,3 +1,5 @@
 open! Core
 
-let () = print_endline "hit or stay?"
+let () =
+Blackjack.Deck.full_deck
+|> List.iter ~f:(fun card -> print_s (Blackjack.Card.sexp_of_t card))

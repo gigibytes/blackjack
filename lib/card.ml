@@ -60,3 +60,4 @@ module Suit = struct
 end
 
 type t = Rank.t * Suit.t 
+[@@deriving sexp_of]
