@@ -14,6 +14,7 @@ let full_deck : t =
 let shuffle (deck : t) =
   let deck_array = List.to_array deck
   in
+  (* shuffle 52 times for good measure lmao *)
   Array.iter deck_array ~f:(fun _ -> Array.permute deck_array );
   deck_array |> Array.to_list
 ;;
