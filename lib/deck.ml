@@ -12,18 +12,10 @@ let full_deck : t =
   ;;
 
 let shuffle (deck : t) =
-  (* I based this shuffle method on a Computerphile video about shuffling *)
-  (* create 52 new places for the cards to randomly go using a dummy card *)
-  let shuffled_deck = Array.create ~len:52 ((Card.Rank.Face Queen), Card.Suit.Hearts)
-  in
   let deck_array = List.to_array deck
   in
-  Array.iter deck_array ~f:(fun current_card ->
-    (* TODO fix this implementation, it currently doesn't change every card. probably better to randomly [permute] a seq from 0 to 51 and use that to place the cards...though i'm not sure there is a difference between that and just permuting the deck itself *)
-    let random_number = Random.int 52
-    in
-    Array.set shuffled_deck random_number current_card 
-  ); shuffled_deck |> Array.to_list
+  Array.iter deck_array ~f:(fun _ -> Array.permute deck_array );
+  deck_array |> Array.to_list
 ;;
 
 let draw (deck : t) : (Card.t option * t) =
