@@ -23,7 +23,7 @@ module Game = struct
   ;;
 end
 
-let blackjack () =
+let blackjack name =
   (* TODO start a game with a fresh deck that gets shuffled.
      TODO take a bet from the player.
      TODO deal two cards to the player.
@@ -39,7 +39,7 @@ let blackjack () =
   in
   let player = Player.{ stack = 0; hand = initial_player_hand }
   in
-  print_endline "Hello player! Your hand is: ";
+  print_endline [%string "Hello %{name}! Your hand is: "];
   List.iter player.hand ~f:(fun card ->  Card.sexp_of_t card |> print_s);
   print_endline "Place a bet."
 
