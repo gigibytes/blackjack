@@ -14,7 +14,7 @@ let full_deck : t =
 let shuffle (deck : t) =
   let deck_array = List.to_array deck
   in
-  (* shuffle 52 times for good measure lmao *)
+  (* shuffle 52 times for good measure lmao. should test if 7 is good enough *)
   Array.iter deck_array ~f:(fun _ -> Array.permute deck_array );
   deck_array |> Array.to_list
 ;;
@@ -28,7 +28,7 @@ let draw (deck : t) : (Card.t option * t) =
 
 (* should write an expect test here to see if the full_deck val is as expected *)
   (* for later: print_s output:
-  ((Face King) Hearts)               
+  ((Face King) Hearts)
   ((Face Queen) Hearts)
   ((Face Jack) Hearts)
   ((Face Ace) Hearts)

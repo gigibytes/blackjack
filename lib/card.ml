@@ -13,7 +13,7 @@ module Rank = struct
     | Nine
     | Ten
   [@@deriving sexp_of, enumerate]
-  
+
     let value = function
     | Two -> `Two
     | Three -> `Three
@@ -33,14 +33,14 @@ module Rank = struct
   end
 
   module Face = struct
-    type t = King | Queen | Jack 
+    type t = King | Queen | Jack
     [@@deriving sexp_of, enumerate]
 
     let value = function
     | King | Queen | Jack -> `Ten
   end
 
-  type t = 
+  type t =
   | Face of Face.t
   | Pip of Pip.t
   | Ace of Ace.t
@@ -52,7 +52,7 @@ module Suit = struct
   [@@deriving sexp_of, enumerate]
 end
 
-type t = Rank.t * Suit.t 
+type t = Rank.t * Suit.t
 [@@deriving sexp_of]
 
 let variant_to_int = function
@@ -72,7 +72,7 @@ let variant_to_int = function
 module Hand = struct
   type t = (Rank.t * Suit.t) list
 
-  let calculate_value (cards : t) = 
+  let calculate_value (cards : t) =
     (* suit doesn't matter, strip it *)
     let ranks_only = List.map cards ~f:(fun (rank, _suit) -> rank)
     in
@@ -84,7 +84,7 @@ module Hand = struct
             | _ -> false)
     in
     (* Tally other card values, then decide what to do with the aces if there are any *)
-    let value_without_aces =  without_aces 
+    let value_without_aces =  without_aces
     |> List.map ~f:(fun rank -> match rank with
       | Rank.Face r -> Rank.Face.value r |> variant_to_int
       | Rank.Pip r -> Rank.Pip.value r |> variant_to_int
@@ -96,7 +96,7 @@ module Hand = struct
         (* ignore the actual ace because the only thing that matters is that we have one.
         What we add depends only on the total value of the rest of the cards so far *)
         if value_without_aces <= 10 then (`Eleven |> variant_to_int) + acc
-        else (`One |> variant_to_int) + acc 
+        else (`One |> variant_to_int) + acc
       ) ~init:value_without_aces
     else value_without_aces
 end
