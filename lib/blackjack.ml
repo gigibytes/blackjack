@@ -24,9 +24,7 @@ module Game = struct
 end
 
 let blackjack name =
-  (* TODO start a game with a fresh deck that gets shuffled.
-     TODO take a bet from the player.
-     TODO deal two cards to the player.
+     (* TODO take a bet from the player.
      TODO show the player's current cards and score.
      TODO show the state of player and dealer: good or bust
      TODO take player choice/input in
