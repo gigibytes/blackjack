@@ -6,7 +6,7 @@ let blackjack_command =
     ~summary:"Start a game of blackjack against a dealer"
     (let%map_open.Command name = flag "name" (required string) ~doc:"STRING name for the player"
      in
-     fun () -> Blackjack.blackjack name
+     fun () -> Blackjack.play name
     )
 ;;
 
