@@ -26,7 +26,7 @@ let draw (deck : t) : (Card.t option * t) =
   | x :: xs -> (Some x, xs)
 ;;
 
-(* should write an expect test here to see if the full_deck val is as expected *)
+(* TODO should write an expect test here to see if the full_deck val is as expected *)
   (* for later: print_s output:
   ((Face King) Hearts)
   ((Face Queen) Hearts)
